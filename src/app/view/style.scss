@@ -40,13 +40,16 @@
 
     .chat {
         width: 60%;
+        max-height: 80vh;
+        overflow-y: scroll;
+        padding: 0 2rem;
 
         .bubble {
             align-self: flex-start;
             display: flex;
             align-items: flex-start;
             width: 100%;
-            margin-bottom: 0.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .sent {
@@ -56,9 +59,15 @@
             p {
                 width: fit-content;
                 max-width: 25vw;
-                text-wrap: nowrap;
                 padding: 1rem;
-
+                width: 25vw;
+                word-wrap: break-word;
+                /* This breaks long words into the next line */
+                overflow-wrap: break-word;
+                /* This is another option for breaking long words */
+                hyphens: auto;
+                /* Adds hyphens to the words when breaking, if supported */
+                white-space: normal;
                 background-color: #2F2F2F;
             }
         }
@@ -68,9 +77,30 @@
 
             p {
                 padding: 1rem;
-
+                width: 100%;
                 border: 1px solid #2F2F2F;
+
+                padding: 1rem;
+                word-wrap: break-word;
+                /* This breaks long words into the next line */
+                overflow-wrap: break-word;
+                /* This is another option for breaking long words */
+                hyphens: auto;
+                /* Adds hyphens to the words when breaking, if supported */
+                white-space: normal;
             }
+        }
+    }
+
+    .alert {
+        font-size: .75rem;
+        font-weight: 400;
+        line-height: 1rem;
+        font-family: "Google Sans", "Helvetica Neue", sans-serif;
+        letter-spacing: .1px;
+
+        a {
+            text-decoration: underline;
         }
     }
 }

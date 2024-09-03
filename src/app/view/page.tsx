@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import "./style.scss";
 import { FaArrowTurnUp } from "react-icons/fa6";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const genAi = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_API);
+import Image from "next/image";
+import GeminiImg from "./../../../public/img/gemini_logo.png";
+const genAi = new GoogleGenerativeAI(
+  process.env.NEXT_PUBLIC_GOOGLE_API as string
+);
 
 const model = genAi.getGenerativeModel({
   model: "gemini-1.5-pro",
@@ -20,11 +23,11 @@ function HomeView({}: Props) {
     },
     {
       type: "recieved",
-      text: "asdf",
+      text: "To ensure that text doesn't exceed 25vw in width and breaks words or even long words into letters when necessary, you can use the following CSS propertie",
     },
     {
       type: "sent",
-      text: "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
+      text: "To ensure that text doesn't exceed 25vw in width and breaks words or even long words into letters when necessary, you can use the following CSS propertie",
     },
     {
       type: "recieved",
@@ -32,11 +35,19 @@ function HomeView({}: Props) {
     },
     {
       type: "sent",
+      text: "To ensure that text doesn't exceed 25vw in width and breaks words or even long words into letters when necessary, you can use the following CSS propertie",
+    },
+    {
+      type: "recieved",
+      text: "asd",
+    },
+    {
+      type: "sent",
       text: "sent",
     },
     {
       type: "recieved",
-      text: "asdf",
+      text: "To ensure that text doesn't exceed 25vw in width and breaks words or even long words into letters when necessary, you can use the following CSS propertie",
     },
     {
       type: "sent",
@@ -63,9 +74,20 @@ function HomeView({}: Props) {
         <div className="chat">
           {chat.map((chat) => {
             return (
-              <div key={chat.text} className={`bubble  ${chat.type}`}>
-                <p className="rounded-lg">{chat.text}</p>
-              </div>
+              <>
+                {chat.type == "recieved" && (
+                  <Image
+                    src={GeminiImg}
+                    height={20}
+                    width={20}
+                    alt="gemini icon"
+                    className="mb-4"
+                  />
+                )}
+                <div key={chat.text} className={`bubble  ${chat.type}`}>
+                  <p className="rounded-lg">{chat.text}</p>
+                </div>
+              </>
             );
           })}
         </div>
@@ -74,29 +96,39 @@ function HomeView({}: Props) {
           Ask anything to <a href="https://gemini.google.com/app">Gemini</a>
         </h1>
       )}
-      <form
-        className="input flex justify-between items-center rounded-full"
-        action={() => {
-          sendMessage(message);
-        }}
-      >
-        <input
-          type="text"
-          placeholder="Enter message"
-          onChange={(e) => {
-            setmessage(e.target.value);
-          }}
-          value={message}
-        />
-        <button
-          onClick={(e) => {
-            e.preventDefault();
+      <>
+        <form
+          className="input flex justify-between items-center rounded-full"
+          action={() => {
             sendMessage(message);
           }}
         >
-          <FaArrowTurnUp />
-        </button>
-      </form>
+          <input
+            type="text"
+            placeholder="Enter message"
+            onChange={(e) => {
+              setmessage(e.target.value);
+            }}
+            value={message}
+          />
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              sendMessage(message);
+            }}
+          >
+            <FaArrowTurnUp />
+          </button>
+        </form>
+
+        <div className="alert">
+          Gemini may display inaccurate info, including about people, so
+          double-check its responses.
+          <a href="https://support.google.com/gemini/">
+            Your privacy & Gemini Apps
+          </a>
+        </div>
+      </>
     </div>
   );
 }
