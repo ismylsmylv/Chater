@@ -13,7 +13,36 @@ type Props = {};
 function HomeView({}: Props) {
   const [message, setmessage] = useState("");
   const [response, setresponse] = useState("");
-
+  const chat = [
+    {
+      type: "sent",
+      text: "asdf",
+    },
+    {
+      type: "recieved",
+      text: "asdf",
+    },
+    {
+      type: "sent",
+      text: "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
+    },
+    {
+      type: "recieved",
+      text: "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
+    },
+    {
+      type: "sent",
+      text: "sent",
+    },
+    {
+      type: "recieved",
+      text: "asdf",
+    },
+    {
+      type: "sent",
+      text: "asdf",
+    },
+  ];
   async function displayResponse() {
     try {
       const r = await model.generateContent(message);
@@ -30,8 +59,16 @@ function HomeView({}: Props) {
   }
   return (
     <div className=" HomeView container flex justify-between items-center flex-col h-screen p-4">
-      {response ? (
-        <div className="response">{response}</div>
+      {!response ? (
+        <div className="chat">
+          {chat.map((chat) => {
+            return (
+              <div key={chat.text} className={`bubble  ${chat.type}`}>
+                <p className="rounded-lg">{chat.text}</p>
+              </div>
+            );
+          })}
+        </div>
       ) : (
         <h1 className="placeholder">
           Ask anything to <a href="https://gemini.google.com/app">Gemini</a>

@@ -37,4 +37,40 @@
             background-color: rgba(255, 255, 255, 0.288);
         }
     }
+
+    .chat {
+        width: 60%;
+
+        .bubble {
+            align-self: flex-start;
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            margin-bottom: 0.2rem;
+        }
+
+        .sent {
+            justify-content: right;
+            align-self: flex-end;
+
+            p {
+                width: fit-content;
+                max-width: 25vw;
+                text-wrap: nowrap;
+                padding: 1rem;
+
+                background-color: #2F2F2F;
+            }
+        }
+
+        .recieved {
+            justify-content: left;
+
+            p {
+                padding: 1rem;
+
+                border: 1px solid #2F2F2F;
+            }
+        }
+    }
 }
