@@ -1,0 +1,40 @@
+.HomeView {
+    margin: 0 auto;
+
+    .input {
+        background-color: #393C43;
+        padding: 0.3rem 2rem;
+        padding-right: 0.3rem;
+
+        input {
+            background-color: transparent;
+            outline: none;
+            width: 40vw;
+        }
+    }
+
+    .placeholder {
+        margin-top: 40vh;
+        font-weight: 500;
+        font-size: 2rem;
+        background: linear-gradient(74deg, rgb(66, 133, 244) 0px, rgb(155, 114, 203) 9%, rgb(217, 101, 112) 20%, rgb(217, 101, 112) 24%, rgb(155, 114, 203) 35%, rgb(66, 133, 244) 44%, rgb(155, 114, 203) 50%, rgb(217, 101, 112) 56%, rgb(19, 19, 20) 75%, #131314 100%);
+        background-size: 400% 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    button {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50rem;
+
+        svg {
+            margin: 0 auto;
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.288);
+        }
+    }
+}
