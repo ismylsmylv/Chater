@@ -2,13 +2,30 @@
 import React, { useState } from "react";
 import "./style.scss";
 import { FaArrowTurnUp } from "react-icons/fa6";
-type Props = {};
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
+const genAi = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GOOGLE_API);
+
+const model = genAi.getGenerativeModel({
+  model: "gemini-1.5-pro",
+});
+type Props = {};
 function HomeView({}: Props) {
   const [message, setmessage] = useState("");
   const [response, setresponse] = useState("");
+
+  async function displayResponse() {
+    try {
+      const r = await model.generateContent(message);
+      console.log(r.response.text());
+      setresponse(r.response.text());
+      setmessage("");
+    } catch (error) {
+      console.error("Error generating content:", error);
+    }
+  }
   function sendMessage(message: string) {
-    setmessage("");
+    displayResponse();
     console.log(message);
   }
   return (
