@@ -96,7 +96,7 @@ function HomeView({}: Props) {
           Ask anything to <a href="https://gemini.google.com/app">Gemini</a>
         </h1>
       )}
-      <>
+      <div>
         <form
           className="input flex justify-between items-center rounded-full"
           action={() => {
@@ -128,7 +128,7 @@ function HomeView({}: Props) {
             Your privacy & Gemini Apps
           </a>
         </div>
-      </>
+      </div>
     </div>
   );
 }
