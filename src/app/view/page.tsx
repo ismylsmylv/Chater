@@ -15,7 +15,7 @@ const model = genAi.getGenerativeModel({
 type Props = {};
 function HomeView({}: Props) {
   const [message, setmessage] = useState("");
-  const [response, setresponse] = useState("");
+  const [response, setresponse] = useState([]);
   const chat = [
     {
       type: "sent",
@@ -58,21 +58,23 @@ function HomeView({}: Props) {
     try {
       const r = await model.generateContent(message);
       console.log(r.response.text());
-      setresponse(r.response.text());
+      setresponse(...response, { type: "recieved", text: r.response.text() });
       setmessage("");
     } catch (error) {
       console.error("Error generating content:", error);
     }
   }
   function sendMessage(message: string) {
+    setresponse(...response, { type: "sent", text: message });
+    setmessage("");
     displayResponse();
     console.log(message);
   }
   return (
     <div className=" HomeView container flex justify-between items-center flex-col h-screen p-4">
-      {!response ? (
+      {response.length > 0 ? (
         <div className="chat">
-          {chat.map((chat) => {
+          {response.map((chat: { type: string; text: string }) => {
             return (
               <>
                 {chat.type == "recieved" && (
