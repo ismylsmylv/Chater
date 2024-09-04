@@ -1,4 +1,6 @@
 "use client";
+
+import { v4 as uuidv4 } from "uuid";
 import React, { useState } from "react";
 import "./style.scss";
 import { FaArrowTurnUp } from "react-icons/fa6";
@@ -15,68 +17,40 @@ const model = genAi.getGenerativeModel({
 type Props = {};
 function HomeView({}: Props) {
   const [message, setmessage] = useState("");
-  const [response, setresponse] = useState([]);
-  const chat = [
-    {
-      type: "sent",
-      text: "asdf",
-    },
-    {
-      type: "recieved",
-      text: "To ensure that text doesn't exceed 25vw in width and breaks words or even long words into letters when necessary, you can use the following CSS propertie",
-    },
-    {
-      type: "sent",
-      text: "To ensure that text doesn't exceed 25vw in width and breaks words or even long words into letters when necessary, you can use the following CSS propertie",
-    },
-    {
-      type: "recieved",
-      text: "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
-    },
-    {
-      type: "sent",
-      text: "To ensure that text doesn't exceed 25vw in width and breaks words or even long words into letters when necessary, you can use the following CSS propertie",
-    },
-    {
-      type: "recieved",
-      text: "asd",
-    },
-    {
-      type: "sent",
-      text: "sent",
-    },
-    {
-      type: "recieved",
-      text: "To ensure that text doesn't exceed 25vw in width and breaks words or even long words into letters when necessary, you can use the following CSS propertie",
-    },
-    {
-      type: "sent",
-      text: "asdf",
-    },
-  ];
+  const [chat, setchat] = useState([] as any);
+  function sendMessage(message: string) {
+    setchat((prevChat: object[]) => [
+      ...prevChat,
+      { type: "sent", text: message },
+    ]);
+
+    console.log(chat, "sent");
+    console.log(message);
+    setmessage("");
+    displayResponse();
+  }
+
   async function displayResponse() {
     try {
       const r = await model.generateContent(message);
       console.log(r.response.text());
-      setresponse(...response, { type: "recieved", text: r.response.text() });
+      setchat((prevChat: object[]) => [
+        ...prevChat,
+        { type: "recieved", text: r.response.text() },
+      ]);
+      console.log(chat, "recieve");
       setmessage("");
     } catch (error) {
       console.error("Error generating content:", error);
     }
   }
-  function sendMessage(message: string) {
-    setresponse(...response, { type: "sent", text: message });
-    setmessage("");
-    displayResponse();
-    console.log(message);
-  }
   return (
     <div className=" HomeView container flex justify-between items-center flex-col h-screen p-4">
-      {response.length > 0 ? (
+      {chat.length > 0 ? (
         <div className="chat">
-          {response.map((chat: { type: string; text: string }) => {
+          {chat.map((chat: { type: string; text: string }) => {
             return (
-              <>
+              <div key={uuidv4()}>
                 {chat.type == "recieved" && (
                   <Image
                     src={GeminiImg}
@@ -86,10 +60,10 @@ function HomeView({}: Props) {
                     className="mb-4"
                   />
                 )}
-                <div key={chat.text} className={`bubble  ${chat.type}`}>
+                <div className={`bubble  ${chat.type}`}>
                   <p className="rounded-lg">{chat.text}</p>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>
