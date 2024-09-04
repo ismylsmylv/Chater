@@ -18,6 +18,16 @@ type Props = {};
 function HomeView({}: Props) {
   const [message, setmessage] = useState("");
   const [chat, setchat] = useState([] as any);
+
+  const parseBoldText = (text) => {
+    // Split the text by **
+    const parts = text.split("**");
+
+    // Map over the parts, wrapping the bold segments in <strong> tags
+    return parts.map((part, index) =>
+      index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+    );
+  };
   function sendMessage(message: string) {
     setchat((prevChat: object[]) => [
       ...prevChat,
@@ -36,7 +46,7 @@ function HomeView({}: Props) {
       console.log(r.response.text());
       setchat((prevChat: object[]) => [
         ...prevChat,
-        { type: "recieved", text: r.response.text() },
+        { type: "recieved", text: parseBoldText(r.response.text()) },
       ]);
       console.log(chat, "recieve");
       setmessage("");

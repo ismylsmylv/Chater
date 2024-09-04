@@ -40,7 +40,7 @@
 
     .chat {
         width: 60%;
-        max-height: 80vh;
+        // max-height: 80vh;
         overflow-y: scroll;
         padding: 0 2rem;
 
@@ -60,7 +60,6 @@
                 width: fit-content;
                 max-width: 25vw;
                 padding: 1rem;
-                width: 25vw;
                 word-wrap: break-word;
                 /* This breaks long words into the next line */
                 overflow-wrap: break-word;
