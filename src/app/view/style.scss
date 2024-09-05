@@ -39,10 +39,11 @@
     }
 
     .chat {
-        width: 60%;
+        // width: 60%;
+        max-width: 840px;
         // max-height: 80vh;
         overflow-y: scroll;
-        padding: 0 2rem;
+        // padding: 0 2rem;
 
         .bubble {
             align-self: flex-start;
@@ -98,11 +99,16 @@
         font-family: "Google Sans", "Helvetica Neue", sans-serif;
         letter-spacing: .1px;
         margin: 0 auto;
+        opacity: 0.8;
         margin-top: 0.2rem;
         width: fit-content;
+        text-align: center;
 
         a {
             text-decoration: underline;
         }
     }
 }
+
+
+@media (max-width:775px) {}

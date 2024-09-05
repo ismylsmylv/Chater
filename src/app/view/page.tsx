@@ -98,6 +98,7 @@ function HomeView({}: Props) {
             value={message}
           />
           <button
+            disabled={!message}
             onClick={(e) => {
               e.preventDefault();
               sendMessage(message);
