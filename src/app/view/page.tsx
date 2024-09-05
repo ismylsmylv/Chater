@@ -19,7 +19,7 @@ function HomeView({}: Props) {
   const [message, setmessage] = useState("");
   const [chat, setchat] = useState([] as any);
 
-  const parseBoldText = (text) => {
+  const parseBoldText = (text: string) => {
     // Split the text by **
     const parts = text.split("**");
 
