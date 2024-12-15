@@ -1,12 +1,13 @@
-import { FaArrowTurnUp, FaCircleArrowUp } from "react-icons/fa6";
-
+"use client";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { FaArrowTurnUp } from "react-icons/fa6";
+import { v4 as uuidv4 } from "uuid";
 import { messages } from "./messages";
 import "./style.scss";
 
+import { keepTheme } from "@/app/utils/theme";
 import { useEffect, useState } from "react";
 import Response from "../../components/Response";
-import { keepTheme } from "@/app/utils/theme";
 export const sampleText =
   "ReactJS, often just called React, is a popular JavaScript library for building user interfaces (UIs), particularly for single-page applications (SPAs). It's maintained by ";
 const genAi = new GoogleGenerativeAI(
@@ -62,15 +63,20 @@ function Assist() {
       setChat((prevChat) => [...prevChat, errorMessage]);
     }
   };
+
+  const [windowHeight, setwindowHeight] = useState(0);
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setwindowHeight(window.innerHeight);
+    }
     keepTheme();
-  });
+  }, []);
   return (
     <>
       <div
         className="Assist container"
         style={{
-          height: window.innerHeight - 40
+          height: windowHeight - 40
         }}
       >
         {chat.length > 0 ? (
@@ -90,6 +96,7 @@ function Assist() {
                     i++;
                     return (
                       <div
+                        key={uuidv4()}
                         className="message"
                         onClick={() => {
                           handleTemplate(message);
