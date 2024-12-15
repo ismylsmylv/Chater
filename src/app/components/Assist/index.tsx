@@ -1,4 +1,4 @@
-import { FaCircleArrowUp } from "react-icons/fa6";
+import { FaArrowTurnUp, FaCircleArrowUp } from "react-icons/fa6";
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { messages } from "./messages";
@@ -70,7 +70,7 @@ function Assist() {
       <div
         className="Assist container"
         style={{
-          height: window.innerHeight - 80
+          height: window.innerHeight - 40
         }}
       >
         {chat.length > 0 ? (
@@ -88,7 +88,6 @@ function Assist() {
                 {messages.map((message, i) => {
                   if (i < 3) {
                     i++;
-
                     return (
                       <div
                         className="message"
@@ -105,32 +104,42 @@ function Assist() {
             </div>
           </>
         )}
-        <form
-          className="textarea"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit(message);
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Type your question"
-            value={message}
-            autoFocus
-            onChange={(e) => {
-              setMessage(e.target.value);
-            }}
-          />
-          <button
-            type="submit"
-            onClick={(e) => {
+        <div className="user">
+          <form
+            className="textarea rounded-full w-full m-auto"
+            onSubmit={(e) => {
               e.preventDefault();
               handleSubmit(message);
             }}
           >
-            <FaCircleArrowUp />
-          </button>
-        </form>
+            <input
+              type="text"
+              placeholder="Type your question"
+              value={message}
+              autoFocus
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
+            />
+            <button
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSubmit(message);
+              }}
+            >
+              <FaArrowTurnUp />
+            </button>
+          </form>
+
+          <div className="alert">
+            Gemini may display inaccurate info, including about people, so
+            double-check its responses.
+            <a href="https://support.google.com/gemini/">
+              Your privacy & Gemini Apps
+            </a>
+          </div>
+        </div>
       </div>
     </>
   );

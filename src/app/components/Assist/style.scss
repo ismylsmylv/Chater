@@ -86,10 +86,12 @@
         gap: 10px;
         border: 1px solid var(--card-border);
         padding: 15px;
-        border-radius: 10px;
         width: 100%;
         max-width: 900px;
         margin-top: 10px;
+        background-color: #393c43;
+        padding: .3rem .3rem .3rem 1.5rem;
+        color: #ffffff;
 
         input {
             background-color: transparent;
@@ -109,5 +111,9 @@
                 fill: var(--secondary-text);
             }
         }
+    }
+
+    .user {
+        width: 100%;
     }
 }

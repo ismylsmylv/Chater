@@ -4,6 +4,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ReactMarkdown from "react-markdown";
 import "./style.scss";
+import Image from "next/image";
+import GeminiImg from "../../../../public/img/gemini_logo.png";
 type Props = {
   id: string;
   chat?: Array<{ text: string; time: number; type: string }>;
@@ -83,6 +85,15 @@ function Response({ chat }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
+                {message.type == "answer" && (
+                  <Image
+                    src={GeminiImg}
+                    height={20}
+                    width={20}
+                    alt="gemini icon"
+                    className="mb-4"
+                  />
+                )}
                 <ReactMarkdown>{typingStates[index]}</ReactMarkdown>
               </motion.div>
             </div>

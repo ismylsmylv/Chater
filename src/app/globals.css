@@ -47,3 +47,45 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+:root {
+  --dark-border: #161616;
+  --main-font: "Roboto", sans-serif;
+}
+
+.theme-dark {
+  --dark-text: #f2f2f2;
+  --light-text: #000000;
+  --secondary-text: #b9b9b9;
+  --dark-background: #161616;
+  --secondary-dark-background: #161616;
+  --ai-background: #383b3d;
+  --light-background: #161616;
+  --accent: #b8dbd9;
+  --button-border: #b8dbd9;
+  --card-border: #2f2e2e;
+  --base-color: #2c56fe;
+  --bubble-background: #303030;
+  --skeleton-base-color: #333333;
+  --skeleton-highlight-color: #666666;
+  --skeleton-background-color: #333333;
+  --card-background: #161616;
+}
+
+.theme-light {
+  --dark-text: #1a1a1a;
+  --light-text: #f2f2f2;
+  --secondary-text: #b9b9b9;
+  --dark-background: #f9fbfd;
+  --secondary-dark-background: #ffffff;
+  --ai-background: #f4f2ee;
+  --light-background: #ffffff;
+  --accent: #dbe7e4;
+  --button-border: #5e4b56;
+  --card-border: #e3e3e3;
+  --base-color: #2c56fe;
+  --bubble-background: #f9fbfd;
+  --skeleton-base-color: #ebebeb;
+  --skeleton-highlight-color: #f5f5f5;
+  --skeleton-background-color: #ebebeb;
+  --card-background: #ffffff;
+}
