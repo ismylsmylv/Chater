@@ -40,10 +40,10 @@
 
     .chat {
         // width: 60%;
-        max-width: 840px;
         // max-height: 80vh;
         overflow-y: scroll;
         // padding: 0 2rem;
+        width: 100%;
 
         .bubble {
             align-self: flex-start;
@@ -112,3 +112,14 @@
 
 
 @media (max-width:775px) {}
+
+
+
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  

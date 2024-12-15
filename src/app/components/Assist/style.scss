@@ -1,0 +1,113 @@
+.Assist {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 2%;
+
+    .texts {
+        display: flex;
+        flex-direction: column;
+
+        .heading {
+            font-family: "Varela Round", sans-serif;
+            font-size: 35px;
+            font-weight: 600;
+            display: inline-block;
+            color: transparent;
+            background: rgb(95, 27, 199);
+            background: linear-gradient(90deg, rgb(139, 61, 255) 9%, rgb(3, 53, 253) 155%);
+            background-size: 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            align-self: flex-end;
+            opacity: 0.5;
+            font-weight: 500;
+        }
+    }
+
+    .messages {
+        max-width: 900px;
+    }
+
+    .mySwiper {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .swiper-slide {
+        width: fit-content !important;
+        max-width: 300px;
+        height: fit-content;
+        margin-right: 10px !important;
+    }
+
+    .message {
+        text-align: center;
+        border: 1px solid var(--card-border);
+        padding: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        // margin: 20px auto;
+
+        &:hover {
+            border-color: var(--base-color);
+        }
+    }
+
+    .swiper-pagination {
+        bottom: 0 !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: var(--base-color);
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+
+    .textarea {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border: 1px solid var(--card-border);
+        padding: 15px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 900px;
+        margin-top: 10px;
+
+        input {
+            background-color: transparent;
+            width: 100%;
+            outline: none;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            svg {
+                fill: var(--secondary-text);
+            }
+        }
+    }
+}
