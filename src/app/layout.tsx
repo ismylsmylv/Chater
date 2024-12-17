@@ -24,10 +24,6 @@ export const metadata: Metadata = {
     follow: true
   },
   //  Verification: If you're verifying with Google Search Console, Pinterest, etc.
-  verification: {
-    google: "your_google_verification_code"
-    // ...other verification codes
-  },
 
   //  Other optional metadata:
   applicationName: "Chater AI Chatbot" // If it's a web app
