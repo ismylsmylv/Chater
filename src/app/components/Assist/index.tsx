@@ -15,7 +15,8 @@ const genAi = new GoogleGenerativeAI(
 );
 const model = genAi.getGenerativeModel({
   // model: "gemini-1.5-pro"
-  model: "gemini-1.5-flash-002"
+  // model: "gemini-1.5-flash-002"
+    model: "gemini-2.5-flash"
 });
 type Message = {
   text: string;
